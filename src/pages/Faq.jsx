@@ -1,8 +1,11 @@
 import React from 'react'
+import CommonSection from '../components/UI/CommonSection';
 
 const Faq = () => {
   return (
-    <div>FAQ</div>
+    <div>
+    <CommonSection title="FAQ"/>
+    </div>
   )
 }
 

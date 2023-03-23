@@ -6,3 +6,9 @@
   background-repeat: no-repeat;
   padding: 80px 0px;
 }
+
+.filter__elements{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}

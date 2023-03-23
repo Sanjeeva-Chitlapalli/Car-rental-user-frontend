@@ -86,6 +86,17 @@ p{
   outline: none;
 }
 
+.payment button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: #000d6b;
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+
+
 @media only screen and (max-width: 992px) {
   .find__cars-left {
     padding: 65px 22px;

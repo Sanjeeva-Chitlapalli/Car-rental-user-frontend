@@ -134,15 +134,17 @@
   }
   
   .search__box {
+    margin-left: 40%;
     border: 1px solid #7c8a972f;
     padding: 7px 12px;
     display: flex;
-    align-items: center;
+    align-items:center;
     border-radius: 50px;
-    background: #020a4de9;
+    background: #3b4bc3;
   }
   
   .search__box input {
+    
     background: transparent;
     border: none;
     outline: none;
@@ -151,10 +153,11 @@
   }
   
   .search__box input::placeholder {
+    color: #fff;
     font-size: 0.8rem;
   }
   .search__box span i {
-    color: rgba(255, 255, 255, 0.555);
+    color: rgb(255, 255, 255);
     cursor: pointer;
   }
   
