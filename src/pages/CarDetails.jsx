@@ -1,23 +1,35 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState } from "react";
+import Popup from 'reactjs-popup';
 import carData from "../assets/data/carData";
 import { Container, Row, Col} from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
 import "../styles/find-car-form.css";
 
-
+const URL = "https://slow-dogs-enjoy-116-73-243-172.loca.lt/vehicle";
 const CarDetails = () => {
   const { slug } = useParams();
+  const[singleCarItem,setSingleCarItem]= useState([])
 
-  const singleCarItem = carData.find((item) => item.carName === slug);
+  useEffect(()=>{
+    async function getData(){
+      const response = await fetch(URL);
+      const data = await response.json();
+      setSingleCarItem(data);
+    }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [singleCarItem]);
+    getData();
+    console.log(singleCarItem,"SinglecarData");
+  });
+
+  
+
+  // const singleCarItem = carData.find((item) => item.id === slug);
+
+
 
   return (
-    <Helmet title={singleCarItem.carName}>
+    <Helmet title={singleCarItem.brandName}>
       <section>
         <Container>
           <Row>
@@ -27,11 +39,11 @@ const CarDetails = () => {
 
             <Col lg="6">
               <div className="car__info">
-                <h2 className="section__title">{singleCarItem.carName}</h2>
+                <h2 className="section__title">{singleCarItem.modelName}</h2>
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                    ${singleCarItem.price}.00 / Day
+                    ${singleCarItem.pricePerHour}.00 / Day
                   </h6>
 
                   <span className=" d-flex align-items-center gap-2">
@@ -59,7 +71,7 @@ const CarDetails = () => {
                       class="ri-roadster-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {singleCarItem.model}
+                    {singleCarItem.brandName}
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">
@@ -75,7 +87,7 @@ const CarDetails = () => {
                       class="ri-timer-flash-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {singleCarItem.speed}
+                    {singleCarItem.mileage}
                   </span>
                 </div>
 
@@ -105,7 +117,18 @@ const CarDetails = () => {
                   </span>
                 </div>
               </div>
-            <div className="form__group">
+              {/* {<div>
+                <Popup
+                  trigger={(open) => (
+                    <button className="button">
+                      Trigger - {open ? "Opened" : "Closed"}
+                    </button>
+                  )}
+                  position="right center" closeOnDocumentClick>
+                  <span> Popup content </span>
+                </Popup>
+              </div>} */}
+              {/* {<div className="form__group">
                   <p>From</p>
                   <input type="date" placeholder="Journey date" required />
                   <p>To</p>
@@ -113,14 +136,9 @@ const CarDetails = () => {
                   <div className="payment text-end mt-5">
                   <button className="btn find__car-btn">Book Car</button>
                   </div>
-            </div>
+            </div>} */}
             </Col>
-            <Col>
-            
-            </Col>
-            
-         
-
+            <Col></Col>
           </Row>
         </Container>
       </section>

@@ -100,6 +100,11 @@
     color: #fff;
   }
   
+  button {
+    background: none;
+    color: #fff;
+    border: none;
+  }
   /* ================ main navbar styles =========== */
   
   .main__navbar {

@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 import { Container, Row, Col } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import "../Header/header.css";
+import LoginPopup from "../LoginSignUp/LoginPopup.jsx";
 
 const navLinks = [
   {
@@ -92,7 +93,8 @@ const Header = () => {
     </header>
   );
 
-  function renderNav(){
+function renderNav(){
+    
     return(
       
       <div className="main__navbar">
@@ -121,15 +123,7 @@ const Header = () => {
             
             <div>
             <Col lg="6" md="6" sm="6">
-              <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
-                <Link to="#" className=" d-flex align-items-center gap-1">
-                  <i class="ri-login-circle-line"></i> Login
-                </Link>
-
-                <Link to="#" className=" d-flex align-items-center gap-1">
-                  <i class="ri-user-line"></i> Register
-                </Link>
-              </div>
+              {LoginSignUp()}
             </Col>
             </div>
 
@@ -140,6 +134,31 @@ const Header = () => {
     )
   }
 };
+
+function LoginSignUp(){
+  const [loginPopup,setLoginPopup] = useState(false)
+  const ToggleLogin=()=>{
+    setLoginPopup(!loginPopup)
+    }
+
+  return (
+
+    <>
+
+    <div className="header__top__right d-flex align-items-center justify-content-end gap-3">
+        <button className=" d-flex align-items-center gap-1">
+                  <i class="ri-login-circle-line"></i> Login
+        </button>
+
+        <button className=" d-flex align-items-center gap-1">
+                  <i class="ri-user-line"></i> Register
+        </button>
+    </div>
+    </>
+
+  );
+
+}
 
 
 

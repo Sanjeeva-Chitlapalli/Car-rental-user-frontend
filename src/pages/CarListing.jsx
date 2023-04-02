@@ -1,11 +1,30 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
 import CarItem from "../components/UI/CarItem";
-import carData from "../assets/data/carData";
 import '../styles/common-section.css'
+import axios from "axios";
+
+
 const CarListing = () => {
+
+  const URL = "https://64104846864814e5b64ccc7b.mockapi.io/vehicle";
+  const[carData,setCarData]= useState([])
+
+  useEffect(()=>{
+    const getCarData = () => {
+    axios
+    .get(URL)
+    .then(data => {
+      setCarData(data.data);
+    })
+    .catch(error => console.log(error));
+    };
+  getCarData();
+  },[]);
+
+
   return (
     <Helmet title="Cars">
       <CommonSection title="Car Listing" />
@@ -13,7 +32,6 @@ const CarListing = () => {
         <Container>
           <Row>
             <Col lg="12">
-              
               <div className=" d-flex align-items-center gap-3 mb-5 filter__elements">
                 <span className=" d-flex align-items-center gap-2">
                   <i class="ri-sort-asc"></i> Sort By
