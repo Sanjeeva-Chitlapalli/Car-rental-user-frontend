@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import "../Header/header.css";
-import LoginPopup from "../LoginSignUp/LoginPopup.jsx";
+
 
 const navLinks = [
   {
@@ -13,10 +13,6 @@ const navLinks = [
   {
     path: "/about",
     display: "About",
-  },
-  {
-    path: "/cars",
-    display: "Cars",
   },
 
   {
@@ -99,7 +95,7 @@ function renderNav(){
       
       <div className="main__navbar">
         <Container>
-          <div className="navigation__wrapper d-flex align-items-center justify-content-between">
+          <div className="navigation__wrapper d-flex align-items-center justify-content-between ">
             <span className="mobile__menu">
               <i class="ri-menu-line" onClick={toggleMenu}></i>
             </span>

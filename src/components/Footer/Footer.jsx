@@ -16,14 +16,9 @@ const quickLinks = [
   },
 
   {
-    path: "/cars",
-    display: "Car Listing",
-  },
-  {
     path: "/faq",
     display: "FAQ",
   },
-
 ];
 
 const Footer = () => {

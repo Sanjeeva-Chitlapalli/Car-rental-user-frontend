@@ -12,3 +12,41 @@
   position: sticky;
   top: 0;
 }
+
+.apply__btn {
+  background: #000d6b !important;
+  color: #fff !important;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-left: 20%;
+}
+
+.apply__btn a {
+  display: flex;
+  align-items: center;
+  column-gap: 0.4rem;
+  text-decoration: none;
+  color: #fff;
+  justify-content: end;
+  font-size: 0.9rem;
+}
+
+.apply__btn a:hover {
+  color: #fff;
+}
+
+button {
+  background: none;
+  color: #fff;
+  border: none;
+}
+
+.filter__elements{
+  border-radius: 10px;
+  margin-top: 0px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+

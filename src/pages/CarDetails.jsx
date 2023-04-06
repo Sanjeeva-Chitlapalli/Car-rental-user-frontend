@@ -1,30 +1,52 @@
 import React, { useEffect, useState } from "react";
-import Popup from 'reactjs-popup';
-import carData from "../assets/data/carData";
+import axios from "axios";
 import { Container, Row, Col} from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
-import { useParams } from "react-router-dom";
+import { useParams,useLocation } from "react-router-dom";
 import "../styles/find-car-form.css";
+import api from "../api/api";
 
-const URL = "https://slow-dogs-enjoy-116-73-243-172.loca.lt/vehicle";
 const CarDetails = () => {
-  const { slug } = useParams();
-  const[singleCarItem,setSingleCarItem]= useState([])
+  const location=useLocation();
+  console.log(location)
+  const TimeData=location.state;
+
+  const { id } = useParams();
+  const [singleCarItem,setSingleCarItem]= useState([])
+
+  console.log(id)
+
+  const [userData,setUserData]=useState({
+    user:"",
+    fromTime:"",
+    toTime:"",
+    estPrice:singleCarItem.estPrice,
+    vehicle_id:id,
+
+});
 
   useEffect(()=>{
-    async function getData(){
-      const response = await fetch(URL);
-      const data = await response.json();
-      setSingleCarItem(data);
-    }
-
-    getData();
-    console.log(singleCarItem,"SinglecarData");
-  });
-
+    const getSingleCarData = () => {
+    axios
+    .get(api+'/vehicle/'+id)
+    .then(data => { setSingleCarItem(data.data); })
+    .catch(error => console.log(error));
+    };
+  getSingleCarData();
+  },[id]);
   
 
-  // const singleCarItem = carData.find((item) => item.id === slug);
+  const postOrder=(e)=>{
+    e.preventDefault();
+    axios
+    .post(api+"/order",{
+    user:userData.user, 
+    fromTime:userData.fromTime,
+    toTime:userData.toTime,
+    estPrice:userData.estPrice,
+    vehicle_id:userData.vehicle_id
+    }).then(res=>console.log('Posting Data',res)).catch(error => console.log(error))
+  }
 
 
 
@@ -33,9 +55,9 @@ const CarDetails = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="6">
+            {/* <Col lg="6">
               <img src={singleCarItem.imgUrl} alt="" className="w-100" />
-            </Col>
+            </Col> */}
 
             <Col lg="6">
               <div className="car__info">
@@ -43,19 +65,8 @@ const CarDetails = () => {
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                    ${singleCarItem.pricePerHour}.00 / Day
+                    ${singleCarItem.estPrice}.00 / Day
                   </h6>
-
-                  <span className=" d-flex align-items-center gap-2">
-                    <span style={{ color: "#f9a826" }}>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                      <i class="ri-star-s-fill"></i>
-                    </span>
-                    ({singleCarItem.rating} ratings)
-                  </span>
                 </div>
 
                 <p className="section__description">
@@ -95,17 +106,17 @@ const CarDetails = () => {
                   className=" d-flex align-items-center mt-3"
                   style={{ columnGap: "2.8rem" }}
                 >
-                  <span className=" d-flex align-items-center gap-1 section__description">
+                  {/* <span className=" d-flex align-items-center gap-1 section__description">
                     <i class="ri-map-pin-line" style={{ color: "#f9a826" }}></i>{" "}
                     {singleCarItem.gps}
-                  </span>
+                  </span> */}
 
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       class="ri-wheelchair-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {singleCarItem.seatType}
+                    {singleCarItem.noofSeats}
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">
@@ -113,7 +124,7 @@ const CarDetails = () => {
                       class="ri-building-2-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {singleCarItem.brand}
+                    {singleCarItem.brandName}
                   </span>
                 </div>
               </div>
@@ -137,8 +148,10 @@ const CarDetails = () => {
                   <button className="btn find__car-btn">Book Car</button>
                   </div>
             </div>} */}
+
+          
             </Col>
-            <Col></Col>
+            <Col><button className="car__item-btn a " onClick={postOrder}>Confirm Booking</button></Col>
           </Row>
         </Container>
       </section>

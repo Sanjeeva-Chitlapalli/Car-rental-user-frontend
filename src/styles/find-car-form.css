@@ -24,8 +24,8 @@ p{
 
 .form__group input {
   border: 1px solid #7c8a972a;
-  padding: 8px 12px;
-
+  padding: 8px 12px ;
+  margin-top: 5px;
   width: 100%;
   outline: none;
 }
