@@ -11,13 +11,27 @@ import { useNavigate, Navigate } from "react-router-dom";
 
 const FindCarForm = () => {
 
-  const TimeData=[
-    {
-    FromDate:"",
-    FromTime:"",
-    ToDate:"",
-    ToTime:""
-    }]
+  const [TimeData,setTimeData]=useState({})
+
+  
+  const changeHandler = e => {
+      setTimeData({...TimeData,[e.target.name]: e.target.value})
+      console.log(TimeData)
+    }
+  
+  
+  const ValidateTimeData =()=>{
+    if (Object.keys(TimeData).length>3){
+      console.log(Object.values(TimeData),Object.keys(TimeData).length)
+      navigate('/cars',{state:{TimeData:TimeData}})
+      
+    }
+    else{
+      console.log(Object.values(TimeData),Object.keys(TimeData).length)
+      console.log('empty')
+    }
+
+  }
 
   const navigate=useNavigate()
 
@@ -27,13 +41,13 @@ const FindCarForm = () => {
 
         <FormGroup className="form__group">
           <p>From</p>
-          <input type="date" placeholder="Journey date" onChange={(e)=>{TimeData.FromDate=e.target.value;}} required />
-          <input type="time" placeholder="Journey date" onChange={(e)=>{TimeData.FromTime=e.target.value;}} required />
+          <input type="date" placeholder="Journey date" name="FromDate" onChange={changeHandler} required valid/>
+          <input type="time" placeholder="Journey date" name="FromTime" onChange={changeHandler} required valid/>
         </FormGroup>
         <FormGroup className="form__group">
           <p>To</p>
-          <input type="date" placeholder="Journey date" onChange={(e)=>{TimeData.ToDate=e.target.value;}} required />
-          <input type="time" placeholder="Journey date" onChange={(e)=>{TimeData.ToTime=e.target.value;console.log(TimeData);}} required />
+          <input type="date" placeholder="Journey date" name="ToDate" onChange={changeHandler} required valid/>
+          <input type="time" placeholder="Journey date" name="ToTime" onChange={changeHandler} required valid/>
           
         </FormGroup>
         {/* {<FormGroup className="select__group">
@@ -47,7 +61,7 @@ const FindCarForm = () => {
         </FormGroup>} */}
 
         <FormGroup className="form__group">
-          <button onClick={()=>{navigate('/cars',{state:{TimeData:TimeData}})}} className="btn find__car-btn" >Find Car</button>
+          <button onClick={ValidateTimeData} className="btn find__car-btn" >Find Car</button>
         </FormGroup>
       </div>
     </Form>

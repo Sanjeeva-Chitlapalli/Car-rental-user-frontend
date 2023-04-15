@@ -15,10 +15,10 @@ const Home = () => {
       <section className="p-0 hero__slider-section">
         <HeroSlider />
         <div className="hero__form">
-          <Container>
-            <Row className="form__row">
+          <Container >
+            <Row className="form__row find_car_card" >
               <Col lg="4" md="4">
-                <div className="find__cars-left">
+                <div className="find__cars-left find_car_card" >
                   <h2>Find your best car here</h2>
                 </div>
               </Col>
@@ -46,5 +46,7 @@ const Home = () => {
     </Helmet>
   );
 };
+
+
 
 export default Home;

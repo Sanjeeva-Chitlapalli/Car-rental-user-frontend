@@ -1,7 +1,8 @@
 .footer {
     background: #000d6b;
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 15px;
+
   }
   
   .footer__logo i {
@@ -17,12 +18,13 @@
   .footer__logo-content {
     color: rgba(255, 255, 255, 0.715);
     margin-top: 15px;
-    line-height: 30px;
+    line-height: 20px;
   }
   
   .quick__link {
     border: none !important;
     background: transparent !important;
+    
   }
   
   .quick__link a {

@@ -21,9 +21,26 @@ const navLinks = [
   },
 ];
 
+const adminNavLinks = [
+  {
+    path: "/home",
+    display: "Home",
+  },
+  {
+    path: "/about",
+    display: "About",
+  },
+
+  {
+    path: "/faq",
+    display: "FAQ",
+  },
+];
+
 
 
 const Header = () => {
+
   const menuRef = useRef(null);
 
   const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
@@ -34,7 +51,7 @@ const Header = () => {
       {renderNav()}
 
       {/* =============== header middle =========== */}
-      <div className="header__middle">
+      {/* <div className="header__middle">
         <Container>
           <Row>
             <Col lg="4" md="3" sm="4">
@@ -83,7 +100,7 @@ const Header = () => {
             </Col>
           </Row>
         </Container>
-      </div>
+      </div> */}
 
       
     </header>
@@ -93,7 +110,7 @@ function renderNav(){
     
     return(
       
-      <div className="main__navbar">
+      <div className="main__navbar fixed-top">
         <Container>
           <div className="navigation__wrapper d-flex align-items-center justify-content-between ">
             <span className="mobile__menu">
@@ -130,6 +147,7 @@ function renderNav(){
     )
   }
 };
+
 
 function LoginSignUp(){
   const [loginPopup,setLoginPopup] = useState(false)

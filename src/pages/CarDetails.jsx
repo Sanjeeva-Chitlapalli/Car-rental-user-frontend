@@ -5,6 +5,7 @@ import Helmet from "../components/Helmet/Helmet";
 import { useParams,useLocation } from "react-router-dom";
 import "../styles/find-car-form.css";
 import api from "../api/api";
+import CommonSection from "../components/UI/CommonSection";
 
 const CarDetails = () => {
   const location=useLocation();
@@ -51,7 +52,9 @@ const CarDetails = () => {
 
 
   return (
+    
     <Helmet title={singleCarItem.brandName}>
+      <CommonSection title="Car Details" />
       <section>
         <Container>
           <Row>
@@ -98,7 +101,7 @@ const CarDetails = () => {
                       class="ri-timer-flash-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {singleCarItem.mileage}
+                    {singleCarItem.mileage} kmpl
                   </span>
                 </div>
 
@@ -116,7 +119,7 @@ const CarDetails = () => {
                       class="ri-wheelchair-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {singleCarItem.noofSeats}
+                    {singleCarItem.noOfSeats}
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">

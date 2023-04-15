@@ -1,10 +1,10 @@
 .common__section {
-  background: linear-gradient(rgb(0, 13, 107, 0.6), rgb(0, 13, 107, 0.6)),
+  background: linear-gradient(#000d6b, rgb(0, 13, 107, 0.6)),
     url("../assets/all-images/drive.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 80px 0px;
+  padding: 90px 0px;
 }
 
 .filter__elements{
@@ -44,9 +44,21 @@ button {
 }
 
 .filter__elements{
+  width: 90%;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-bottom: 5px;
   border-radius: 10px;
+  margin-bottom: 10px;
   margin-top: 0px;
   margin-left: 5%;
   margin-right: 5%;
+  box-shadow: 5px 5px 15px -5px #7c8a97;
+}
+
+.filter__element{
+  padding-top: 0 !important;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 

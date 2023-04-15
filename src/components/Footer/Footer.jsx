@@ -42,8 +42,6 @@ const Footer = () => {
             <p className="footer__logo-content">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Consequuntur, distinctio, itaque reiciendis ab cupiditate harum ex
-              quam veniam, omnis expedita animi quibusdam obcaecati mollitia?
-              Delectus et ad illo recusandae temporibus?
             </p>
           </Col>
 
@@ -67,8 +65,6 @@ const Footer = () => {
               <p className="office__info">Phone: +0995345875365</p>
 
               <p className="office__info">Email: xxyz@gmail.com</p>
-
-              <p className="office__info">Office Time: 10am - 7pm</p>
             </div>
           </Col>
 
