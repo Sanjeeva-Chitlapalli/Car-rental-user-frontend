@@ -58,9 +58,9 @@ const CarDetails = () => {
       <section>
         <Container>
           <Row>
-            {/* <Col lg="6">
-              <img src={singleCarItem.imgUrl} alt="" className="w-100" />
-            </Col> */}
+            <Col lg="6">
+              <img src={singleCarItem.url} alt="" className="w-100" />
+            </Col>
 
             <Col lg="6">
               <div className="car__info">

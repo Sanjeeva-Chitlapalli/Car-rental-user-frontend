@@ -18,12 +18,14 @@ const CarListing = () => {
   const TimeData=location.state;
   console.log(TimeData);
 
+  const query=location.search;
+  console.log(query)
   const [carData,setCarData]= useState([])
 
   useEffect(()=>{
     const getCarData = () => {
     axios
-    .get(api+'/vehicle')
+    .get(api+'/vehicle'+'?fromTime="'+TimeData.FromDate+'"T"'+TimeData.FromTime+'"&toTime="'+TimeData.ToDate+'"T"'+TimeData.ToTime+'"')
     //+ '?fromTime="'+TimeData.FromDate+'"T"'+TimeData.FromTime+'"&toTime="'+TimeData.ToDate+'"T"'+TimeData.ToTime+'"'
     .then(data => {
       setCarData(data.data);

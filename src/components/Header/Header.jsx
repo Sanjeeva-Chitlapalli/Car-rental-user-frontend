@@ -5,21 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import "../Header/header.css";
 
 
-const navLinks = [
-  {
-    path: "/home",
-    display: "Home",
-  },
-  {
-    path: "/about",
-    display: "About",
-  },
 
-  {
-    path: "/faq",
-    display: "FAQ",
-  },
-];
 
 const adminNavLinks = [
   {
@@ -39,7 +25,7 @@ const adminNavLinks = [
 
 
 
-const Header = () => {
+const Header = ({navLinks}) => {
 
   const menuRef = useRef(null);
 

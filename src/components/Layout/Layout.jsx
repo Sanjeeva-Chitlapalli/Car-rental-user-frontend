@@ -6,8 +6,23 @@ import Footer from '../Footer/Footer'
 import Routers from '../../routers/Routers'
 
 const Layout = () => {
+  const userNavLinks = [
+    {
+      path: "/home",
+      display: "Home",
+    },
+    {
+      path: "/about",
+      display: "About",
+    },
+  
+    {
+      path: "/faq",
+      display: "FAQ",
+    },
+  ];
   return <Fragment>
-    <Header/>
+    <Header navLinks={userNavLinks}/>
     <div>
         <Routers/>
     </div>

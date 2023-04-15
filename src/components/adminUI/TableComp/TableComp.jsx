@@ -4,7 +4,9 @@ import { Table } from 'reactstrap'
 const TableComp = ({columns,data}) => {
     console.log(data)
     return (
+    
     <Table responsive size='sm'>
+        
         <thead>
             <tr>
             {columns.map((column) => (
