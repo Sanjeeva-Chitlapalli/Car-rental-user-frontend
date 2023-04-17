@@ -152,9 +152,9 @@ const CarDetails = () => {
                   </div>
             </div>} */}
 
-          
+          <button className="car__item-btn a confirm__btn" onClick={postOrder}>Confirm Booking</button>
             </Col>
-            <Col><button className="car__item-btn a " onClick={postOrder}>Confirm Booking</button></Col>
+            
           </Row>
         </Container>
       </section>

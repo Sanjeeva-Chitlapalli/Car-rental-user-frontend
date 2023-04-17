@@ -21,8 +21,23 @@ const Layout = () => {
       display: "FAQ",
     },
   ];
+  const adminNavLinks = [
+    {
+      path: "/users",
+      display: "Users",
+    },
+    {
+      path: "/orders",
+      display: "Orders",
+    },
+  
+    {
+      path: "/stores",
+      display: "Stores",
+    },
+  ];
   return <Fragment>
-    <Header navLinks={userNavLinks}/>
+    <Header navLinks={adminNavLinks}/>
     <div>
         <Routers/>
     </div>

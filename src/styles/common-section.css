@@ -62,3 +62,12 @@ button {
   margin-bottom: 10px;
 }
 
+
+
+.confirm__btn{
+  border-radius: 10px;
+}
+
+.invoice{
+  text-align: center;
+}

@@ -41,8 +41,8 @@ const FindCarForm = () => {
 
         <FormGroup className="form__group">
           <p>From</p>
-          <input type="date" placeholder="Journey date" name="FromDate" onChange={changeHandler} required valid/>
-          <input type="time" placeholder="Journey date" name="FromTime" onChange={changeHandler} required valid/>
+          <input type="date" placeholder="Journey date" name="FromDate" onChange={changeHandler} required valid min={new Date()}/>
+          <input type="time" placeholder="Journey date" name="FromTime" onChange={changeHandler} required valid  />
         </FormGroup>
         <FormGroup className="form__group">
           <p>To</p>

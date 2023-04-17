@@ -10,6 +10,8 @@ import NotFound from '../pages/NotFound'
 import Orders from '../pages/admin/Orders'
 import Users from '../pages/admin/Users'
 import Stores from '../pages/admin/Stores'
+import OrderInvoice from '../pages/admin/OrderInvoice'
+import StoreById from '../pages/admin/StoreById'
 
 
 const Routers = () => {
@@ -24,6 +26,8 @@ const Routers = () => {
     <Route path='/cars' element={<CarListing/>} />
     <Route path='/cars/:id' element={<CarDetails/>} />
     <Route path='*' element={<NotFound/>} />
+    <Route path='/orders/:id' element={<OrderInvoice/>} />
+    <Route path='/stores/:id' element={<StoreById/>} />
   </Routes>))
 }
 

@@ -12,22 +12,44 @@ import api from "../api/api"
 
 const CarListing = () => {
 
-
+  const [filters,setFilters]=useState([])
   const location=useLocation();
   console.log(location)
-  const TimeData=location.state;
+  const TimeData=location.state.TimeData;
   console.log(TimeData);
 
   const query=location.search;
   console.log(query)
   const [carData,setCarData]= useState([])
 
+  const changeHandler = e => {
+    setFilters({...filters,[e.target.name]: e.target.value})
+    console.log(filters)
+  }
+
+
+  const ApiUrl=(filters)=>{
+    const apiUrl=""
+    if (filters.brand){
+      apiUrl+="&brand="+filters.brand;
+    }
+    if (filters.price){
+      apiUrl+="&estPrice="+filters.price;
+    }
+    if (filters.noOfSeats){
+      apiUrl+="&noOfSeats="+filters.noOfSeats;
+    }
+    return apiUrl
+  }
+
   useEffect(()=>{
     const getCarData = () => {
+    
     axios
-    .get(api+'/vehicle'+'?fromTime="'+TimeData.FromDate+'"T"'+TimeData.FromTime+'"&toTime="'+TimeData.ToDate+'"T"'+TimeData.ToTime+'"')
+    .get(api+'/vehicle'+'?fromTime='+TimeData.FromDate+'T'+TimeData.FromTime+'&toTime='+TimeData.ToDate+'T'+TimeData.ToTime)
     //+ '?fromTime="'+TimeData.FromDate+'"T"'+TimeData.FromTime+'"&toTime="'+TimeData.ToDate+'"T"'+TimeData.ToTime+'"'
     .then(data => {
+      
       setCarData(data.data);
     })
     .catch(error => console.log(error));
@@ -47,7 +69,7 @@ const CarListing = () => {
               <div className=" d-flex align-items-center gap-5 mb-5 flex-wrap">
                 <span className=" d-flex align-items-center gap-2 ">
                   <i class="ri-sort-asc"></i><p>Sort by</p>
-                  <select className="filter__element">
+                  <select className="filter__element" name="sort" onChange={changeHandler}>
                   <option>Select</option>
                   <option value="low">Low to High</option>
                   <option value="high">High to Low</option>
@@ -60,9 +82,9 @@ const CarListing = () => {
                 <span className=" d-flex align-items-center gap-3 filter__element">
                 <i class="ri-filter-2-fill"></i><p>Filters</p>
                 <span className="d-flex align-items-center gap-5 filter__element">
-                <Filters filter="Brand" option1="Tesla" option2="Toyota" option3="BMW"/>
-                <Filters filter="Price" option1="10" option2="20" option3="30"/>
-                <Filters filter="Seats" option1="1" option2="2" option3="3"/>
+                <Filters filter="Brand" name="brand" options={["Tesla"]} option1="Tesla" option2="Toyota" option3="BMW" changeHandler={changeHandler}/>
+                <Filters filter="Price" name="price" option1="10" option2="20" option3="30" changeHandler={changeHandler}/>
+                <Filters filter="Seats" name="noOfSeats" option1="2" option2="5" option3="7" changeHandler={changeHandler}/>
                 </span>
                 
                 </span>
@@ -85,11 +107,11 @@ const CarListing = () => {
 };
 
 
-const Filters = ({filter, option1, option2, option3})=>{
+const Filters = ({filter,name, option1, option2, option3,changeHandler})=>{
   return(
   <div>
     <p>{filter}</p>
-    <select className="filter__elements">
+    <select className="filter__elements" name={name} onChange={changeHandler}>
                   <option>--none--</option>
                   <option>{option1}</option>
                   <option >{option2}</option>

@@ -39,7 +39,9 @@ function Users() {
   return (
     <div>
         <CommonSection title="Users" />
-        <TableComp columns={colList} data={fullData}/>
+        <div >
+        <TableComp columns={colList} data={fullData} isClickable={false}/>
+        </div>
     </div>
   )
 }
