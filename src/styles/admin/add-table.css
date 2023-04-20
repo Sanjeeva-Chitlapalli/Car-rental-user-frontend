@@ -1,0 +1,11 @@
+.add-button{
+    /* float: right; */
+    display:flex;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    padding: auto;
+}
+.table-comp{
+    width: 90%;
+    margin: auto;
+}

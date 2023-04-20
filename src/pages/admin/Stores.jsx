@@ -4,6 +4,7 @@ import FormComp from '../../components/adminUI/FormComp/FormComp';
 import axios from 'axios';
 import api from '../../api/api';
 import CommonSection from '../../components/UI/CommonSection';
+import '../../styles/admin/add-table.css'
 
 function Stores() {
     const colList=[
@@ -51,8 +52,12 @@ function Stores() {
   return (
     <div>
         <CommonSection title="Stores" />
-        <FormComp formTitle="Add Stores" FieldList={formFields} tableUrl="/store" />
-        <TableComp columns={colList} data={fullData} url="/stores/" isClickable={true}/>
+        <div className='add-button'>
+            <FormComp formTitle="Add Stores" FieldList={formFields} tableUrl="/store" />
+        </div>
+        <div className='table-comp'>
+            <TableComp columns={colList} data={fullData} url="/stores/" isClickable={true}/>
+        </div>
     </div>
   )
 }

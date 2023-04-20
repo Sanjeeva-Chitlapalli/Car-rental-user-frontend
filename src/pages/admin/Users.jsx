@@ -3,6 +3,7 @@ import TableComp from '../../components/adminUI/TableComp/TableComp'
 import axios from 'axios';
 import api from '../../api/api';
 import CommonSection from '../../components/UI/CommonSection';
+import '../../styles/admin/add-table.css'
 
 function Users() {
     const colList=[
@@ -39,7 +40,7 @@ function Users() {
   return (
     <div>
         <CommonSection title="Users" />
-        <div >
+        <div className='table-comp'>
         <TableComp columns={colList} data={fullData} isClickable={false}/>
         </div>
     </div>

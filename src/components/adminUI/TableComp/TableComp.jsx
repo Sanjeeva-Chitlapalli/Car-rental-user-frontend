@@ -9,10 +9,10 @@ const TableComp = ({columns,data,url,style,isClickable}) => {
     return (
     
     <Table className='table__comp' responsive size='sm' style={style}>
-        <thead>
+        <thead className='table-primary' >
             <tr >
             {columns.map((column) => (
-                <th key={column}>{column.header}</th>))}
+                <th className='table_head' key={column}>{column.header}</th>))}
             </tr>
         </thead>
         <tbody>

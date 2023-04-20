@@ -4,6 +4,7 @@ import axios from 'axios';
 import api from '../../api/api';
 import CommonSection from '../../components/UI/CommonSection';
 import FormComp from '../../components/adminUI/FormComp/FormComp';
+import '../../styles/admin/add-table.css'
 
 
 function Orders() {
@@ -79,7 +80,7 @@ function Orders() {
 
     useEffect(()=>{
         const getFullData=()=>{
-            axios.get(api+'/order')
+            axios.get(api+'/order/getOrderByStatus?orderStatus="COMPLETED"')
             .then(data=>{
                 setFullData(data.data);
             })
@@ -93,8 +94,12 @@ function Orders() {
   return (
     <div>
         <CommonSection title="Orders" />
+        <div className='add-button table-comp'>
         <FormComp formTitle="Add Orders" FieldList={formFields} tableUrl="/order" />
-        <TableComp columns={colList} data={fullData} url="/orders/" isClickable={true} />
+        </div>
+        <div className='table-comp'>
+            <TableComp columns={colList} data={fullData} url="/orders/" isClickable={true} />
+        </div>
     </div>
   )
 }

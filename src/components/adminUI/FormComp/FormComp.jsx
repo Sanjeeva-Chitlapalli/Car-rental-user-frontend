@@ -25,6 +25,7 @@ const FormComp= ({formTitle,FieldList,tableUrl}) => {
     return (
         <div>
           <Button className='add__btn' color="primary" onClick={toggle}>
+          <i class="ri-add-line"></i>
             Add
           </Button>
           <Modal isOpen={modal} toggle={toggle}>

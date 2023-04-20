@@ -4,6 +4,7 @@ import axios from 'axios';
 import api from '../../api/api';
 import CommonSection from '../../components/UI/CommonSection';
 import { useParams } from 'react-router-dom';
+import '../../styles/admin/add-table.css'
 
 function StoreById() {
 
